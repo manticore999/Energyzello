@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+
+# Data
+*.csv
+*.tsv
+*.xlsx
+*.parquet
+*.h5
+*.joblib
+*.pkl
+
+# MLflow
+mlruns/
+
+# DVC
+*.dvc
+.dvc/
+.dvcignore
+
+# Streamlit
+.streamlit/
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db

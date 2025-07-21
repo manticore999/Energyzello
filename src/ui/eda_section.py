@@ -1,0 +1,30 @@
+import streamlit as st
+import base64
+
+def show_eda_section(eda):
+    st.subheader("Dataset Overview")
+    st.markdown("### Summary Statistics for Consumption")
+    stats = eda['summary']['summary']
+    st.markdown(f"- **Count:** {stats['count']:.0f} (number of non-missing values)")
+    st.markdown(f"- **Mean:** {stats['mean']:.2f} (average consumption)")
+    st.markdown(f"- **Std:** {stats['std']:.2f} (standard deviation, a measure of spread)")
+    st.markdown(f"- **Min:** {stats['min']:.0f} (minimum value)")
+    st.markdown(f"- **25%:** {stats['25%']:.0f} (first quartile, 25% of values below this)")
+    st.markdown(f"- **50% (Median):** {stats['50%']:.0f} (middle value)")
+    st.markdown(f"- **75%:** {stats['75%']:.0f} (third quartile, 75% of values below this)")
+    st.markdown(f"- **Max:** {stats['max']:.0f} (maximum value)")
+    st.markdown(":information_source: **Explanation:**\n- The mean and median show the central tendency.\n- Std shows how much values vary.\n- Quartiles (25%, 50%, 75%) show the distribution.\n- Min/Max show the range.")
+    st.markdown(f"**Missing values in 'consumption':** {eda['summary']['missing']['consumption']}")
+    st.markdown(":information_source: **Missing values** are data points that are not present. Here, 0 means the data is complete.")
+    st.markdown("---")
+    st.markdown("### Time Series Plot")
+    st.image(base64.b64decode(eda['time_series_plot']), use_container_width=True)
+    st.markdown(":bar_chart: **This plot shows how consumption changes over time. Look for trends, seasonality, or anomalies.")
+    st.markdown("---")
+    st.markdown("### Histogram of Consumption")
+    st.image(base64.b64decode(eda['histogram_plot']), use_container_width=True)
+    st.markdown(":bar_chart: **The histogram shows the distribution of consumption values. Is it symmetric, skewed, or has outliers?")
+    st.markdown("---")
+    st.markdown("### Boxplot of Consumption")
+    st.image(base64.b64decode(eda['boxplot']), use_container_width=True)
+    st.markdown(":package: **The boxplot visualizes the spread and outliers in consumption. The box shows the middle 50% of values, and points outside the whiskers are potential outliers.")
